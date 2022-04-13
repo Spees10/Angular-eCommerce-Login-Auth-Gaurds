@@ -18,6 +18,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="Order" routerLinkActive="active">Orders</a>
         </li>
+        <li [hidden]="!isUserLogged" class="nav-item">
+          <a class="nav-link" routerLink="Add-Product" routerLinkActive="active">Add Product</a>
+        </li>
         <li [hidden]="isUserLogged" class="nav-item">
           <a class="nav-link" routerLink="Login" routerLinkActive="active">Login</a>
         </li>
