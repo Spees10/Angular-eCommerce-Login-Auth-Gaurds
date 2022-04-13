@@ -1,0 +1,26 @@
+<p>Product works!</p>
+<div>{{ nationalID | NationalID: "FullDate" }}</div>
+<div>{{ nationalID | NationalID: "YY" }}</div>
+
+
+<div class="card col-3 d-inline-block" *ngFor="let item of ProductList2; let indi = index" [ngClass]="{
+        'bg-warning': item.quantity == 1,
+        'bg-default': item.quantity > 1
+      }">
+  <img RoundedShadow bgColor="crimson" class="card-img-top" [src]="item.img" alt="" />
+  <div class="card-body">
+    <h4 class="card-title">{{ item.name }}</h4>
+    <h4 class="card-title">Quantity:{{ item.quantity }}</h4>
+    <h4 class="card-title">{{ item.price | currency: "EGP":"code" }}</h4>
+    <p class="card-text">{{ dato | date: "shortDate" }}</p>
+    <input class="form-control" type="number" #itemsCount>
+    <button type="button" class="btn btn-outline-success"
+      (click)="buyPrd(item.price,itemsCount.value,item);item.quantity = item.quantity - +(itemsCount.value)">
+      Add to Cart
+    </button>
+    <button type="button" class="btn btn-outline-secondary" (click)="openPrdDetails(item.id)">
+      Details
+    </button>
+    <a name="Details2" id="" class="btn btn-link" [routerLink]="['/Product',item.id]" role="button">Details2</a>
+  </div>
+</div>

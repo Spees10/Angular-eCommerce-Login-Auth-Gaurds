@@ -1,0 +1,20 @@
+<div class="card col-3 d-inline-block">
+  <img RoundedShadow bgColor="crimson" class="card-img-top" [src]="prdi?.img" alt="" />
+  <div class="card-body">
+    <h4 class="card-title">{{ prdi?.name }}</h4>
+    <h4 class="card-title">Quantity:{{ prdi?.quantity }}</h4>
+    <h4 class="card-title">{{ prdi?.price| currency: "EGP":"code" }}</h4>
+    <input class="form-control" type="number" #itemsCount>
+    <hr>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button [disabled]="currPrdID==prdIdArr[0]" type="button" class="btn btn-secondary m-1"
+        (click)="prevPrd()">Previous</button>
+
+      <button type="button" class="btn btn-dark m-1" (click)="goBack()">Go Back</button>
+
+      <button [disabled]="currPrdID==prdIdArr[prdIdArr.length-1]" type="button" class="btn btn-secondary m-1"
+        (click)="nxtPrd()">Next</button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,37 @@
+<div class="mb-3 col-1">
+  <label for="productCatego" class="form-label">Category:</label>
+  <select class="form-control" name="cat" id="prdCat" [(ngModel)]="SelectedCatID">
+    <option value="0" selected>All</option>
+    <option *ngFor="let cato of Cat" [value]="cato.ID">{{cato.name}}</option>
+  </select>
+</div>
+<div class="text-danger">
+  selected Category ID:> {{SelectedCatID}}
+</div>
+<hr>
+<div class="bg-info">
+  <app-product class="col-10" [SentCatID]="SelectedCatID" (totalPriceChanged)="onTotalPriceChanged($event)"
+    (sentIcart)="onSentICart($event)">
+  </app-product>
+</div>
+
+<div class="text-danger" style="font-size: 25px;font-family: Curlz MT;">
+  total Price: {{RecievedOrderTotalPrice}}
+</div>
+
+<div class="card col-5 d-inline-block" *ngFor="let item of cartList; let indi = index">
+  <img RoundedShadow bgColor="crimson" class="card-img-top" [src]="item.img" alt="" />
+  <div class="card-body">
+    <h4 class="card-title">{{ indi }}</h4>
+    <h4 class="card-title">{{ item.name }}</h4>
+    <h4 class="card-title">Count:{{ item.count }}</h4>
+    <h4 class="card-title">{{ item.price | currency: "EGP":"code" }}</h4>
+    <input class="form-control" type="number" #itemsCount>
+    <button type="button" class="btn btn-outline-warning" (click)="deleto(item,indi)">Delete</button>
+
+    <!-- <button type="button" class="btn btn-outline-success"
+      (click)="buyPrd(item.price,itemsCount.value,item);item.quantity = item.quantity - +(itemsCount.value)">
+      Buy
+    </button> -->
+  </div>
+</div>
